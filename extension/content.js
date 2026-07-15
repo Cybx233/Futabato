@@ -704,20 +704,20 @@
       // Collection prev/next nav buttons — direction-aware placement
       self._updateCollectionButtons();
 
+      // Helper: create a click handler for collection nav buttons that references
+      // the current collection data at click time (not at bind time).
+      function makeNavHandler(side) {
+        return function (e) {
+          e.stopPropagation();
+          var info = self._colNavData && self._colNavData[side];
+          if (info && info.element) info.element.click();
+        };
+      }
+
       // Bind collection nav via the helper method (re-binds on direction toggle)
       root.getElementById('collectionBtnL').addEventListener('click', makeNavHandler('L'));
       root.getElementById('collectionBtnR').addEventListener('click', makeNavHandler('R'));
     };
-
-    // Helper: create a click handler for collection nav buttons that references
-    // the current collection data at click time (not at bind time).
-    function makeNavHandler(side) {
-      return function (e) {
-        e.stopPropagation();
-        var info = this._colNavData && this._colNavData[side];
-        if (info && info.element) info.element.click();
-      };
-    }
 
     ReaderController.prototype._updateCollectionButtons = function () {
       if (!this.shadowRoot) return;

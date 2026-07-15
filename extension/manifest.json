@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "双叶妹妹",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "把公众号文章中的图片，还原成接近纸质书的左右双页阅读模式。",
   "host_permissions": ["https://mp.weixin.qq.com/*"],
   "action": {
